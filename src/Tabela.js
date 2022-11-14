@@ -1,7 +1,8 @@
-export default function Tabela(){
+export default function Tabela({vetor}){
     return(
-
+// cabeçalho da tabela
 <table className='table'>
+
 <thead>
 <tr>
 <th>#</th>
@@ -10,15 +11,22 @@ export default function Tabela(){
 <th>Selecionar</th>
 </tr>
 </thead>
+
 <tbody>
-    <tr>
+   {
+    vetor.map((Obj, indice)=>(
 
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+        <tr key={indice}>
 
-    </tr>
+        <td>{indice+1}</td>
+        <td>{Obj.nome}</td>
+        <td>{Obj.marcar}</td>
+        <td><button className="btn btn-success">Selecionar</button></td>
+        
+            </tr>
+
+    ))
+   }
 </tbody>
 </table>
 

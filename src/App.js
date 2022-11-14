@@ -15,15 +15,15 @@ useEffect(()=>{
   fetch("http://localhost:8080/listar")
   .then(retorno=>retorno.json())
   .then(retorno_convertido=>setProdutos(retorno_convertido));
-},[])
+},[])// [] garanti que ele vai fazer apenas uma vez essa requisição.
 
 
   //Retorno
   return (
     <div >
-      <p>{JSON.stringify(produtos)}</p>
+     
       <Formulario botao={btnCadastrar} />
-      <Tabela />
+      <Tabela  vetor={produtos}/>
     </div>
   );
 }
