@@ -1,7 +1,7 @@
 export default function Tabela(){
     return(
 
-<table>
+<table className='table'>
 <thead>
 <tr>
 <th>#</th>
@@ -12,7 +12,7 @@ export default function Tabela(){
 </thead>
 <tbody>
     <tr>
-        
+
 <td></td>
 <td></td>
 <td></td>
