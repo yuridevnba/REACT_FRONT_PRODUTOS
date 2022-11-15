@@ -1,4 +1,4 @@
-export default function Tabela({vetor}){
+export default function Tabela({vetor,selecionar}){
     return(
 // cabeçalho da tabela
 <table className='table'>
@@ -21,7 +21,7 @@ export default function Tabela({vetor}){
         <td>{indice+1}</td>
         <td>{Obj.nome}</td>
         <td>{Obj.marcar}</td>
-        <td><button className="btn btn-success">Selecionar</button></td>
+        <td><button  onClick={()=> {selecionar(indice)}}className="btn btn-success">Selecionar</button></td>
         
             </tr>
 
