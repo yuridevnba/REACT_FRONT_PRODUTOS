@@ -61,12 +61,14 @@ const aoDigitar=(e)=>{
 
    const limparFormulario=()=>{
     setObjProdutos(produto); // modelo sempre vai estar limpo.
+    setBtnCadastrar(true);
    }
+
    //Selecionar produto
 
    const selecionarProduto =(indice)=>{
     setObjProdutos(produtos[indice]);
-    setBtnCadastrar(false)
+    setBtnCadastrar(false);
 
    }
 
@@ -74,7 +76,7 @@ const aoDigitar=(e)=>{
   return (
     <div >
      
-      <Formulario botao={btnCadastrar} eventoTeclado={aoDigitar} cadastrar={Cadastrar}  obj={objProdutos}/>
+      <Formulario botao={btnCadastrar} eventoTeclado={aoDigitar} cadastrar={Cadastrar}  obj={objProdutos} cancelar={limparFormulario}/>
       <Tabela  vetor={produtos}  selecionar={selecionarProduto}/>
     </div>
   );
