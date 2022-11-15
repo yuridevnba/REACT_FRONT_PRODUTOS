@@ -30,15 +30,30 @@ useEffect(()=>{
 
 //Obtendo os dados do formulário
 const aoDigitar=(e)=>{
-  //console.log(e.target);
+  //console.log(e.target);// o objeto que está executando o evento.
   setObjProdutos({...objProdutos,[e.target.name]:e.target.value})// o valor que está contendo o objeto produto, código, valor e marca.
 }
+   //Cadastrar Produto
+   const Cadastrar = ()=>{
+    fetch('http://localhost:8080/cadastrar',{
+      method:'post',
+      body:JSON.stringify(objProdutos),
+      headers:{
+        'Content-type':'application/json',
+        'Accept':'application/json'
+      }
+    }) // requisições do tipo get.
+    .then(retorno=>retorno.json()) // promises
+    .then(retorno_convertido=>{
+      console.log(retorno_convertido);
+    })// quando for convertido para um Json
+   }
 
   //Retorno
   return (
     <div >
-     <p>{JSON.stringify(objProdutos)}</p>
-      <Formulario botao={btnCadastrar} eventoTeclado={aoDigitar} />
+     
+      <Formulario botao={btnCadastrar} eventoTeclado={aoDigitar} cadastrar={Cadastrar} />
       <Tabela  vetor={produtos}/>
     </div>
   );
