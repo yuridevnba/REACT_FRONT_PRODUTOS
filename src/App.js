@@ -28,12 +28,17 @@ useEffect(()=>{
   .then(retorno_convertido=>setProdutos(retorno_convertido));
 },[])// [] garanti que ele vai fazer apenas uma vez essa requisição.
 
+//Obtendo os dados do formulário
+const aoDigitar=(e)=>{
+  //console.log(e.target);
+  setObjProdutos({...objProdutos,[e.target.name]:e.target.value})// o valor que está contendo o objeto produto, código, valor e marca.
+}
 
   //Retorno
   return (
     <div >
      <p>{JSON.stringify(objProdutos)}</p>
-      <Formulario botao={btnCadastrar} />
+      <Formulario botao={btnCadastrar} eventoTeclado={aoDigitar} />
       <Tabela  vetor={produtos}/>
     </div>
   );
