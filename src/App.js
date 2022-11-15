@@ -45,7 +45,15 @@ const aoDigitar=(e)=>{
     }) // requisições do tipo get.
     .then(retorno=>retorno.json()) // promises
     .then(retorno_convertido=>{
-      console.log(retorno_convertido);
+
+      if(retorno_convertido.mensagem!==undefined){
+        // se retorno_convertido, tiver msg, erro
+        alert(retorno_convertido.mensagem)
+      }else{
+        setProdutos([...produtos,retorno_convertido]);
+        alert('Produto cadastrado com sucesso!')
+      }
+      //console.log(retorno_convertido);
     })// quando for convertido para um Json
    }
 
