@@ -52,16 +52,22 @@ const aoDigitar=(e)=>{
       }else{
         setProdutos([...produtos,retorno_convertido]);
         alert('Produto cadastrado com sucesso!')
+        limparFormulario()
       }
       //console.log(retorno_convertido);
     })// quando for convertido para um Json
+   }
+   //Limpar formulário
+
+   const limparFormulario=()=>{
+    setObjProdutos(produto); // modelo sempre vai estar limpo.
    }
 
   //Retorno
   return (
     <div >
      
-      <Formulario botao={btnCadastrar} eventoTeclado={aoDigitar} cadastrar={Cadastrar} />
+      <Formulario botao={btnCadastrar} eventoTeclado={aoDigitar} cadastrar={Cadastrar}  obj={objProdutos}/>
       <Tabela  vetor={produtos}/>
     </div>
   );
