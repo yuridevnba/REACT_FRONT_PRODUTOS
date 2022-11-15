@@ -57,6 +57,48 @@ const aoDigitar=(e)=>{
       //console.log(retorno_convertido);
     })// quando for convertido para um Json
    }
+
+   //Remover Produto
+   const remover = ()=>{
+    fetch('http://localhost:8080/remover/'+objProdutos.codigo,{
+      method:'delete',
+      
+      headers:{
+        'Content-type':'application/json',
+        'Accept':'application/json'
+      }
+    }) 
+    .then(retorno=>retorno.json())
+    .then(retorno_convertido=>{
+
+     // Mensagem
+     alert(retorno_convertido.mensagem);
+
+     // Cópia do vetor de produtos
+
+     let vetorTemp=[...produtos]; // acessar ao código,nome e marca.
+
+     // Ìndice
+     let indice=vetorTemp.findIndex((p)=>{
+       return p.codigo === objProdutos.codigo;
+      // retorna a posição de alguma verificação.
+      // posição que foi removida do vetor.
+    });
+
+    // Remover produto do vetorTemp
+
+    vetorTemp.splice(indice,1);
+    // Atualizar o vetor de produtos
+    setProdutos(vetorTemp);
+
+    //Limpar formulário
+    limparFormulario();
+
+
+  })
+}
+
+
    //Limpar formulário
 
    const limparFormulario=()=>{
@@ -76,7 +118,7 @@ const aoDigitar=(e)=>{
   return (
     <div >
      
-      <Formulario botao={btnCadastrar} eventoTeclado={aoDigitar} cadastrar={Cadastrar}  obj={objProdutos} cancelar={limparFormulario}/>
+      <Formulario botao={btnCadastrar} eventoTeclado={aoDigitar} cadastrar={Cadastrar}  obj={objProdutos} cancelar={limparFormulario}  remover={remover}/>
       <Tabela  vetor={produtos}  selecionar={selecionarProduto}/>
     </div>
   );
