@@ -1,4 +1,4 @@
- export default function Formulario({botao,eventoTeclado,cadastrar,obj,cancelar,remover}){
+ export default function Formulario({botao,eventoTeclado,cadastrar,obj,cancelar,remover,alterar}){
     return(
 <form>
 <input type='text' value={obj.nome} onChange={eventoTeclado} name='nome' placeholder='Nome' className='form-control'/>
@@ -10,7 +10,7 @@
     :
     <div>
 
-<input type='button' value='Alterar' className='btn btn-warning'/>
+<input type='button' value='Alterar' onClick={alterar} className='btn btn-warning'/>
 <input type='button'value='Remover' onClick={remover} className='btn btn-danger'/>
 <input type='button' value='Cancelar'  onClick={cancelar} className='btn btn-secondary'/>
 
